@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Speedy Apps Mania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --coral: #ff4d2e; --yellow: #ffdb00; --cream: #fdf9f4; --cream2: #f5f0e8; --ink: #1c1712; --muted: #9a9188; --border: rgba(28,23,18,0.08); }
+    body { background: var(--cream); color: var(--ink); font-family: "Outfit", sans-serif; font-size: 16px; line-height: 1.8; }
+    nav { padding: 0 48px; height: 64px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(253,249,244,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); z-index: 100; }
+    .nav-logo { font-family: "Unbounded", sans-serif; font-size: 13px; font-weight: 900; color: var(--ink); text-decoration: none; }
+    .nav-logo em { color: var(--coral); font-style: normal; }
+    .nav-back { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--ink); }
+    .container { max-width: 740px; margin: 0 auto; padding: 72px 40px 96px; }
+    .page-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .eyebrow-line { height: 2px; width: 24px; background: var(--coral); border-radius: 2px; }
+    .eyebrow-text { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--coral); text-transform: uppercase; }
+    h1 { font-family: "Unbounded", sans-serif; font-size: 28px; font-weight: 900; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.02em; line-height: 1.2; }
+    .subtitle { font-size: 16px; color: var(--muted); font-weight: 300; margin-bottom: 56px; line-height: 1.7; }
+    .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
+    .intro-box { background: white; border: 1.5px solid var(--border); border-left: 4px solid var(--coral); border-radius: 16px; padding: 22px 28px; margin-bottom: 48px; font-size: 15px; color: #4e4840; line-height: 1.8; }
+    h2 { font-family: "Unbounded", sans-serif; font-size: 11px; font-weight: 700; color: var(--coral); letter-spacing: 0.14em; text-transform: uppercase; margin: 44px 0 14px; }
+    p { color: #6e6660; margin-bottom: 16px; font-weight: 300; }
+    ul { color: #6e6660; padding-left: 22px; margin-bottom: 16px; font-weight: 300; }
+    ul li { margin-bottom: 8px; line-height: 1.7; }
+    strong { color: var(--ink); font-weight: 600; }
+    a { color: var(--coral); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .contact-box { background: white; border: 1.5px solid var(--border); border-radius: 20px; padding: 32px; margin-top: 56px; }
+    .contact-box-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .contact-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--coral); text-transform: uppercase; margin-bottom: 6px; }
+    .contact-email { font-size: 16px; font-weight: 600; color: var(--ink); }
+    .contact-sub { font-size: 13px; color: var(--muted); margin-top: 4px; font-weight: 300; }
+    .email-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: white; font-size: 13px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; box-shadow: 0 4px 16px rgba(255,77,46,0.3); }
+    .email-btn:hover { opacity: 0.88; text-decoration: none; }
+    footer { background: var(--ink); padding: 28px 48px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.35); }
+    footer a { color: rgba(255,255,255,0.55); }
+    footer a:hover { color: white; text-decoration: none; }
+    @media (max-width: 600px) { nav { padding: 0 20px; } .container { padding: 48px 20px 64px; } footer { padding: 24px 20px; } .contact-box-inner { flex-direction: column; align-items: flex-start; } }
+
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 56px; }
+    .info-card { background: white; border: 1.5px solid var(--border); border-radius: 20px; padding: 28px; transition: border-color 0.2s; }
+    .info-card:hover { border-color: var(--coral); }
+    .info-card.wide { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: linear-gradient(135deg, #fff8f5 0%, white 100%); border-color: rgba(255,77,46,0.2); }
+    .info-icon { font-size: 28px; margin-bottom: 12px; }
+    .info-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--coral); text-transform: uppercase; margin-bottom: 6px; }
+    .info-value { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+    .info-sub { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 300; }
+    .policy-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .policy-row { background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; transition: border-color 0.2s, transform 0.15s; }
+    .policy-row:hover { border-color: var(--coral); transform: translateX(4px); text-decoration: none; }
+    .policy-row-left { display: flex; align-items: center; gap: 14px; }
+    .policy-row-icon { font-size: 22px; }
+    .policy-row-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .policy-row-arrow { font-size: 13px; color: var(--coral); font-weight: 700; }
+    @media (max-width: 560px) { .cards-grid { grid-template-columns: 1fr; } .info-card.wide { grid-column: span 1; flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">SPEEDY<em>.</em></a>
+    <a class="nav-back" href="index.html">← Home</a>
+  </nav>
+  <div class="container">
+    <div class="page-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Get in Touch</div></div>
+    <h1>Contact Us</h1>
+    <p class="subtitle">Support, feedback, or business enquiries — we'd love to hear from you.</p>
+
+    <div class="cards-grid">
+      <div class="info-card wide">
+        <div>
+          <div class="info-icon">📧</div>
+          <div class="info-label">Email — Support & General</div>
+          <div class="info-value">sshdsst8@gmail.com</div>
+          <div class="info-sub">We typically respond within 24–48 hours</div>
+        </div>
+        <a class="email-btn" href="mailto:sshdsst8@gmail.com">Send Email ↗</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div class="info-label">Location</div>
+        <div class="info-value">Gujarat, India 🇮🇳</div>
+        <div class="info-sub">Made with love in India</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🎮</div>
+        <div class="info-label">Play Store</div>
+        <div class="info-value"><a href="https://play.google.com/store/apps/developer?id=Speedy+Apps+Mania" target="_blank">Speedy Apps Mania ↗</a></div>
+        <div class="info-sub">All our games in one place</div>
+      </div>
+    </div>
+
+    <h2>Privacy Policies</h2>
+    <div class="policy-rows">
+      <a class="policy-row" href="aquasortpuzz-privacy-policy.html">
+        <div class="policy-row-left"><span class="policy-row-icon">💧</span><span class="policy-row-name">Aqua SortPuz: Color Sort</span></div>
+        <span class="policy-row-arrow">View →</span>
+      </a>
+      <a class="policy-row" href="birdbranchsort-privacy-policy.html">
+        <div class="policy-row-left"><span class="policy-row-icon">🐦</span><span class="policy-row-name">Bird Branch Sort: Color Puzzle</span></div>
+        <span class="policy-row-arrow">View →</span>
+      </a>
+      <a class="policy-row" href="terms.html">
+        <div class="policy-row-left"><span class="policy-row-icon">📄</span><span class="policy-row-name">Terms of Service — All Apps</span></div>
+        <span class="policy-row-arrow">View →</span>
+      </a>
+    </div>
+  </div>
+  <footer>© 2026 Speedy Apps Mania &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="support.html">Support</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></footer>
+</body>
+</html>

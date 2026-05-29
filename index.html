@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speedy Apps Mania – Fast. Fun. Free.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --coral: #ff4d2e;
+      --coral-soft: #ff7a5c;
+      --yellow: #ffdb00;
+      --cream: #fdf9f4;
+      --cream2: #f5f0e8;
+      --ink: #1c1712;
+      --ink2: #2e2920;
+      --muted: #9a9188;
+      --border: rgba(28,23,18,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(253,249,244,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo em { color: var(--coral); font-style: normal; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-link { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: var(--ink); }
+    .nav-pill {
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 99px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-pill:hover { background: var(--coral); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 0;
+      align-items: center;
+      padding: 0 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,77,46,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-left { padding-right: 48px; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero h1 .stroke {
+      -webkit-text-stroke: 2px var(--ink);
+      color: transparent;
+    }
+    .hero h1 .coral { color: var(--coral); }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--coral);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(255,77,46,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,77,46,0.4); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); background: var(--cream2); }
+
+    /* ── HERO RIGHT — floating cards ── */
+    .hero-right { position: relative; height: 480px; }
+    .float-card {
+      position: absolute;
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(28,23,18,0.10);
+      border: 1px solid var(--border);
+      animation: float 6s ease-in-out infinite;
+    }
+    .float-card-1 { width: 200px; top: 40px; left: 20px; animation-delay: 0s; }
+    .float-card-2 { width: 185px; bottom: 60px; right: 10px; animation-delay: -3s; }
+    .float-tag { position: absolute; top: -16px; right: 16px; background: var(--yellow); color: var(--ink); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+    .float-icon { font-size: 36px; margin-bottom: 14px; }
+    .float-name { font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+    .float-stars { color: var(--coral); font-size: 13px; margin-bottom: 6px; }
+    .float-sub { font-size: 11px; color: var(--muted); }
+    .float-badge {
+      position: absolute;
+      top: 200px;
+      left: 140px;
+      background: var(--coral);
+      color: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(255,77,46,0.35);
+      animation: float 6s ease-in-out infinite;
+      animation-delay: -1.5s;
+      line-height: 1.4;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* ── STATS ── */
+    .stats-strip {
+      background: var(--ink);
+      padding: 0;
+      overflow: hidden;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat {
+      padding: 36px 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .stat-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; font-weight: 500; }
+
+    /* ── APPS ── */
+    .apps-section {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kicker-line { height: 2px; width: 32px; background: var(--coral); border-radius: 2px; }
+    .kicker-text { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: var(--coral); text-transform: uppercase; }
+    .section-h { font-family: 'Unbounded', sans-serif; font-size: 36px; font-weight: 900; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 48px; line-height: 1.1; }
+
+    .apps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .app-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      border: 1.5px solid var(--border);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s;
+      position: relative;
+    }
+    .app-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 24px 64px rgba(28,23,18,0.12); }
+    .app-card-header {
+      padding: 32px 32px 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .app-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+    }
+    .icon-aqua { background: linear-gradient(135deg, #ddf4ff, #b8e8ff); }
+    .icon-bird { background: linear-gradient(135deg, #dfffec, #b8f5d0); }
+    .arrow-chip {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--cream2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--muted);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .app-card:hover .arrow-chip { background: var(--coral); color: white; transform: rotate(-45deg); }
+    .app-card-body { padding: 0 32px 32px; }
+    .app-name {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .app-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-weight: 300; }
+    .app-meta { display: flex; align-items: center; justify-content: space-between; }
+    .app-stars { font-size: 14px; color: var(--coral); letter-spacing: 0.05em; }
+    .app-rating-val { font-size: 14px; font-weight: 700; color: var(--ink); margin-left: 6px; }
+    .app-chip {
+      background: var(--cream2);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── POLICY ── */
+    .policy-section { background: var(--ink2); padding: 80px 48px; }
+    .policy-inner { max-width: 1100px; margin: 0 auto; }
+    .policy-inner .section-h { color: white; }
+    .policy-inner .kicker-line { background: var(--yellow); }
+    .policy-inner .kicker-text { color: var(--yellow); }
+    .policy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 0; }
+    .policy-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .policy-card:hover { background: rgba(255,255,255,0.1); border-color: var(--yellow); transform: translateY(-2px); }
+    .policy-icon { font-size: 24px; flex-shrink: 0; }
+    .policy-name { font-size: 14px; font-weight: 600; color: white; line-height: 1.3; }
+    .policy-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); padding: 40px 48px; }
+    footer .inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 900; color: white; }
+    .footer-logo em { color: var(--coral); font-style: normal; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-link { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-link:hover { color: white; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .hero { grid-template-columns: 1fr; padding: 48px 20px 40px; min-height: auto; gap: 48px; }
+      .hero-left { padding-right: 0; }
+      .hero-right { height: 280px; }
+      .float-card-1 { width: 160px; }
+      .float-card-2 { width: 150px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .apps-section { padding: 64px 20px; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .policy-section { padding: 64px 20px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">SPEEDY<em>.</em></a>
+    <div class="nav-links">
+      <a class="nav-link" href="#apps">Apps</a>
+      <a class="nav-link" href="support.html">Support</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+      <a class="nav-pill" href="https://play.google.com/store/apps/developer?id=Speedy+Apps+Mania" target="_blank">Play Store ↗</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">🎮 Mobile Puzzle Games</div>
+      <h1>Sort.<br><span class="coral">Play.</span><br><span class="stroke">Repeat.</span></h1>
+      <p class="hero-desc">Addictive puzzle games crafted to keep your brain sharp and your fingers busy. Fast, fun, and totally free.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="https://play.google.com/store/apps/developer?id=Speedy+Apps+Mania" target="_blank">▶ View All Apps</a>
+        <a class="btn-ghost" href="support.html">Get Support</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="float-card float-card-1">
+        <div class="float-tag">⭐ Top Pick</div>
+        <div class="float-icon">💧</div>
+        <div class="float-name">Aqua SortPuz</div>
+        <div class="float-stars">★★★★★</div>
+        <div class="float-sub">4.6 · Color Sort</div>
+      </div>
+      <div class="float-badge">🇮🇳<br/>Made in<br/>India</div>
+      <div class="float-card float-card-2">
+        <div class="float-icon">🐦</div>
+        <div class="float-name">Bird Branch Sort</div>
+        <div class="float-stars">★★★★☆</div>
+        <div class="float-sub">3.9 · Puzzle</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Published Games</div></div>
+      <div class="stat"><div class="stat-num">4.6★</div><div class="stat-label">Top Rating</div></div>
+      <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Always Free</div></div>
+      <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Age Rating</div></div>
+    </div>
+  </div>
+
+  <section class="apps-section" id="apps">
+    <div class="section-kicker"><div class="kicker-line"></div><div class="kicker-text">Our Games</div></div>
+    <div class="section-h">Play & Enjoy</div>
+    <div class="apps-grid">
+
+      <a class="app-card" href="https://play.google.com/store/apps/details?id=com.givogrow.aquasortpuzz" target="_blank">
+        <div class="app-card-header">
+          <div class="app-icon-wrap icon-aqua">💧</div>
+          <div class="arrow-chip">↗</div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-name">Aqua SortPuz: Color Sort</div>
+          <div class="app-desc">Pour and sort colorful water into the right bottles. Hundreds of carefully designed levels — relaxing yet surprisingly tricky.</div>
+          <div class="app-meta">
+            <div><span class="app-stars">★★★★★</span><span class="app-rating-val">4.6</span></div>
+            <div class="app-chip">Puzzle</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="app-card" href="https://play.google.com/store/apps/details?id=com.givogrow.birdbranchsort" target="_blank">
+        <div class="app-card-header">
+          <div class="app-icon-wrap icon-bird">🐦</div>
+          <div class="arrow-chip">↗</div>
+        </div>
+        <div class="app-card-body">
+          <div class="app-name">Bird Branch Sort: Color Puzzle</div>
+          <div class="app-desc">Sort colorful birds onto matching branches. A charming, unique twist on classic color-sort puzzles that you won't be able to put down.</div>
+          <div class="app-meta">
+            <div><span class="app-stars">★★★★☆</span><span class="app-rating-val">3.9</span></div>
+            <div class="app-chip">Puzzle</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="policy-section">
+    <div class="policy-inner">
+      <div class="section-kicker"><div class="kicker-line"></div><div class="kicker-text">Legal</div></div>
+      <div class="section-h" style="margin-bottom:32px;">Policies & Docs</div>
+      <div class="policy-grid">
+        <a class="policy-card" href="aquasortpuzz-privacy-policy.html"><div class="policy-icon">💧</div><div><div class="policy-name">Aqua SortPuz</div><div class="policy-sub">Privacy Policy</div></div></a>
+        <a class="policy-card" href="birdbranchsort-privacy-policy.html"><div class="policy-icon">🐦</div><div><div class="policy-name">Bird Branch Sort</div><div class="policy-sub">Privacy Policy</div></div></a>
+        <a class="policy-card" href="terms.html"><div class="policy-icon">📄</div><div><div class="policy-name">Terms of Service</div><div class="policy-sub">All Apps</div></div></a>
+        <a class="policy-card" href="contact.html"><div class="policy-icon">📧</div><div><div class="policy-name">Contact Us</div><div class="policy-sub">sshdsst8@gmail.com</div></div></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="inner">
+      <div class="footer-logo">SPEEDY<em>.</em></div>
+      <div class="footer-links">
+        <a class="footer-link" href="support.html">Support</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+        <a class="footer-link" href="terms.html">Terms</a>
+        <a class="footer-link" href="https://play.google.com/store/apps/developer?id=Speedy+Apps+Mania" target="_blank">Play Store ↗</a>
+      </div>
+      <div class="footer-copy">© 2026 Speedy Apps Mania · Made in India 🇮🇳</div>
+    </div>
+  </footer>
+
+</body>
+</html>
